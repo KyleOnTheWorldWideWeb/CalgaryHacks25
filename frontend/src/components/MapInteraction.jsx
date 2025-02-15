@@ -25,7 +25,7 @@ const MapComponent = () => {
     return () => map.remove(); // Cleanup when component unmounts
   }, []);
 
-  return <div ref={mapContainer} style={{ width: "100%", height: "500px" }} />;
+  return <div ref={mapContainer} style={{ width: "100%", height: "calc(100vh - 10rem)" }} />;
 };
 
 export default MapComponent;
