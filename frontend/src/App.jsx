@@ -1,12 +1,13 @@
 import { useState } from "react";
-import MapInteraction from "./MapInteraction";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home.jsx";
 
 function App() {
   return (
-    <div>
-      <h1 class="my-class">Hello world! wusing tailwind style</h1>
-      <MapInteraction />
-    </div>
+    <Routes>
+      <Route path="WildChanging" element={<Home />} />
+      <Route path="/" element={<h1>Hello</h1>} />
+    </Routes>
   );
 }
 

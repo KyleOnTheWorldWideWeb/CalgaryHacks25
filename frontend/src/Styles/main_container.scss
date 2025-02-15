@@ -1,0 +1,31 @@
+$main-container-debug: false;
+
+@mixin main-container-debug-border {
+  border: solid #ffffff;
+}
+
+$main-container-width: 1200px;
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  max-width: $main-container-width; // Set a max width to prevent full-width on larger screens
+  min-height: calc(100vh - 6rem); // 6rem is the height of the navbar
+  padding: 2rem;
+  margin: 0 auto; // Center the container
+  box-sizing: border-box;
+  background-color: #80808067;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 1rem; // Adjust padding for smaller screens
+    max-width: 100%; // Full width on mobile devices
+  }
+
+  @if $main-container-debug {
+    @include main-container-debug-border;
+  }
+}
