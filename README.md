@@ -1,5 +1,5 @@
 # Wild Change
-An interactive map created to raise awareness of the environmental degradation that has occurred in the 20th and 21st century.
+An interactive map created to raise awareness about the environmental degradation that has occurred in the 20th and 21st century.
 
 ## Contents
 - [INSTALLATION](#installation)
