@@ -6,6 +6,7 @@ import MapInteraction from "../Componets/MapInteraction.jsx";
 import Header from "../Componets/Header.jsx";
 import TopRowContainer from "../Componets/TopRowContainer.jsx";
 import OverlaySelectionContainer from "../Componets/OverlaySelectionContainer.jsx";
+import BottomRowContainer from "../Componets/BottomRowContainer.jsx";
 
 function Root() {
   return (
@@ -13,6 +14,7 @@ function Root() {
       <Header />
       <MainContainer>
         <TopRowContainer><OverlaySelectionContainer></OverlaySelectionContainer><MapInteraction /></TopRowContainer>
+        <BottomRowContainer></BottomRowContainer>
       </MainContainer>
     </div>
   );
