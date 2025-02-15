@@ -30,7 +30,7 @@ const MapComponent = () => {
       // Caribou Habitat Layer
       map.addSource("caribou-range", {
         type: "geojson",
-        data: "/data/Caribou_Range.geojson",
+        // data: "/data/Caribou_Range.geojson",
       });
 
       map.addLayer({
@@ -47,7 +47,8 @@ const MapComponent = () => {
       // Grizzly Bear Habitat Layer
       map.addSource("grizzly-habitat", {
         type: "geojson",
-        data: "/data/Merged_Grizzly_Bear_Habitat.geojson",
+        data: "/data/Dissolved_Grizzly_Bear_Habitat.geojson",
+        // data: "/data/Merged_Grizzly_Bear_Habitat.geojson",
       });
 
       map.addLayer({
@@ -72,10 +73,6 @@ const MapComponent = () => {
         : "mapbox://styles/mapbox/streets-v12"
     );
   };
-
-
-
-  
 
   return (
     <div className="fixed top-0 left-0 w-full h-full">
