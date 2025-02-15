@@ -7,14 +7,20 @@ import Header from "../Componets/Header.jsx";
 import TopRowContainer from "../Componets/TopRowContainer.jsx";
 import OverlaySelectionContainer from "../Componets/OverlaySelectionContainer.jsx";
 import BottomRowContainer from "../Componets/BottomRowContainer.jsx";
+import GraphingContainer from "../Componets/GraphingContainer.jsx";
 
 function Root() {
   return (
     <div className="bg-gray-900">
       <Header />
       <MainContainer>
-        <TopRowContainer><OverlaySelectionContainer></OverlaySelectionContainer><MapInteraction /></TopRowContainer>
-        <BottomRowContainer></BottomRowContainer>
+        <TopRowContainer>
+          <OverlaySelectionContainer></OverlaySelectionContainer>
+          <MapInteraction />
+        </TopRowContainer>
+        <BottomRowContainer>
+          <GraphingContainer />
+        </BottomRowContainer>
       </MainContainer>
     </div>
   );

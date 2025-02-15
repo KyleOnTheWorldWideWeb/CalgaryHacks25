@@ -8,7 +8,6 @@ $bottom-row-container-width: 100%;
   align-items: center;
   width: 100%;
   max-width: $bottom-row-container-width; // Set a max width to prevent full-width on larger screens
-  min-height: calc(100vh - 6rem); // 6rem is the height of the navbar
   padding: 2rem;
   margin: 0 auto; // Center the container
   box-sizing: border-box;
