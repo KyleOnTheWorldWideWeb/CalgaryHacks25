@@ -1,4 +1,4 @@
-export const addFillLayer = (map, layer) => {
+export const addFillLayer = (map, layer, layerVisibility) => {
   if (!map.getSource(layer.id)) {
     map.addSource(layer.id, {
       type: "geojson",
@@ -11,14 +11,14 @@ export const addFillLayer = (map, layer) => {
       source: layer.id,
       paint: {
         "fill-color": layer.color,
-        "fill-opacity": layer.visible ? 0.6 : 0,
+        "fill-opacity": layerVisibility[layer.id] ? 0.6 : 0, // 🔥 Dynamically set opacity
         "fill-outline-color": "#000",
       },
     });
   }
 };
 
-export const addHeatmapLayer = (map, layer) => {
+export const addHeatmapLayer = (map, layer, layerVisibility) => {
   if (!map.getSource(layer.id)) {
     map.addSource(layer.id, {
       type: "geojson",
@@ -42,7 +42,7 @@ export const addHeatmapLayer = (map, layer) => {
           0.8, "rgb(239,138,98)",
           1, "rgb(178,24,43)"
         ],
-        "heatmap-opacity": 0.7,
+        "heatmap-opacity": layerVisibility[layer.id] ? 0.7 : 0, // 🔥 Dynamically set opacity
       },
     });
   }

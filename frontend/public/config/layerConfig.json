@@ -2,6 +2,7 @@
   {
     "id": "caribou-layer",
     "name": "Caribou Range",
+    "description": "The Range of the Caribou",
     "file": "/data/Caribou_Range.geojson",
     "color": "#008000",
     "visible": true
@@ -9,6 +10,7 @@
   {
     "id": "burrowing-owl-layer",
     "name": "Burrowing Owl Range",
+    "description":"The Range of the Burrowing Owl",
     "file": "/data/Burrowing_Owl_Range.geojson",
     "color": "#FFD700",
     "visible": true
@@ -16,6 +18,7 @@
   {
     "id": "grizzly-bear-layer",
     "name": "Grizzly Bear Range",
+    "description":"The Range of the Grizzly Bear",
     "file": "/data/Grizzly_Bear_Range.geojson",
     "color": "#A52A2A",
     "visible": false
@@ -23,6 +26,7 @@
   {
     "id": "swift-fox-layer",
     "name": "Swift Fox Range",
+    "description":"The Range of the Swift Fox",
     "file": "/data/Swift_Fox_Range.geojson",
     "color": "#FF4500",
     "visible": true

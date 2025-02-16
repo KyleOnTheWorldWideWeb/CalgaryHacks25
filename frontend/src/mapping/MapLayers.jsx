@@ -15,9 +15,9 @@ const MapLayers = ({ map }) => {
         layers.forEach((layer) => {
           if (layerVisibility[layer.id]) {
             if (layer.type === "heatmap") {
-              addHeatmapLayer(map, layer);
+              addHeatmapLayer(map, layer, layerVisibility);
             } else {
-              addFillLayer(map, layer);
+              addFillLayer(map, layer, layerVisibility);
             }
           } else {
             if (map.getLayer(layer.id)) {

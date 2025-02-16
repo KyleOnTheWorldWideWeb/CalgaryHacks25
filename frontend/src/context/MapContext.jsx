@@ -62,7 +62,7 @@ export const MapProvider = ({ children }) => {
     if (MAP_VIEWS[newView]) {
       setMapView(MAP_VIEWS[newView]);
 
-      // **Trigger refresh when changing views**
+      //make sure the map is refreshed
       setLayerRefresh((prev) => !prev);
     }
   };

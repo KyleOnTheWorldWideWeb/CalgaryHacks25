@@ -13,6 +13,6 @@ export const MAP_DATES = {
 
 export const MapInitializers = {
 
-  "StartLocation": [-114.0719, 51.0447],
-  "StartZoom": 6
+  "StartLocation": [-114.0719, 54.0447],
+  "StartZoom": 5
 }
