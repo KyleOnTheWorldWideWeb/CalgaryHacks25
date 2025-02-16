@@ -12,8 +12,8 @@ const MapComponent = () => {
 
   // Store map position (center & zoom)
   const [mapState, setMapState] = useState({
-    center: MapInitializers.StartLocation,
-    zoom: MapInitializers.StartZoom,
+    center: [-113, 54.5], // Default center (Alberta)
+    zoom: 5,
   });
 
   useEffect(() => {
@@ -39,9 +39,22 @@ const MapComponent = () => {
     return () => map.remove();
   }, [mapView]); // Re-initialize map if view changes
 
+  const recenterMap = () => {
+    if (mapRef.current) {
+      mapRef.current.flyTo({
+        center: [-113, 54.5], // Coordinates for Alberta
+        zoom: 5,
+        essential: true // This animation is considered essential with respect to prefers-reduced-motion
+      });
+    }
+  };
+
   return (
-    <div style={{ width: "100%", height: "calc(100vh - 7rem)" }}>
-      <div ref={mapContainer} className="absolute inset-0 w-full h-full" />
+    <div className="w-full h-[calc(100vh-7rem)] relative rounded-lg">
+      <div ref={mapContainer} className="absolute inset-0 w-full h-full rounded-lg" />
+      <button onClick={recenterMap} className="absolute top-2.5 right-2.5 z-10 p-2.5 rounded-lg bg-white text-black shadow-md cursor-pointer">
+        Center Map
+      </button>
       {mapRef.current && <MapLayers map={mapRef.current} />}
     </div>
   );
