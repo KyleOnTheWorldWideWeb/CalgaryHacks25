@@ -3,12 +3,13 @@ $bottom-row-container-width: 100%;
 .bottom-row-container {
   border: solid rgb(17, 0, 255);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: start;
   align-items: center;
   width: 100%;
   max-width: $bottom-row-container-width; // Set a max width to prevent full-width on larger screens
   padding: 2rem;
+  gap: 1rem;
   margin: 0 auto; // Center the container
   box-sizing: border-box;
   background-color: #80808067;

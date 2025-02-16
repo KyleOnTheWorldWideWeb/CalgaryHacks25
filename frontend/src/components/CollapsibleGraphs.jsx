@@ -15,7 +15,8 @@ const CollapsibleGraph = ({ title }) => {
   return (
     <div className="collapsible-graph">
       <button className="toggle-btn" onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? "▼" : "▶"} {title}
+        <span class="title">{title}</span>
+        <span class="symbol">{isOpen ? "-" : "+"}</span>
       </button>
       {isOpen && (
         <div className="graphs">
