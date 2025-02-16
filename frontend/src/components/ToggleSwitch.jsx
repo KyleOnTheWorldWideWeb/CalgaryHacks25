@@ -1,23 +1,27 @@
 import React from "react";
-import { useState } from "react";
 import { Switch } from "@headlessui/react";
 
-const ToggleSwitch = ({ label }) => {
-  const [enabled, setEnabled] = useState(false);
-
+const ToggleSwitch = ({ label, checked, onChange }) => {
   return (
-    <div className="centre">
-      <span className="text-sm font-medium px-2">{label}</span>
+    <div className="flex items-center justify-between w-full px-1 py-1 ">
+      <span className="text-sm font-medium">{label}</span>
       <Switch
-        checked={enabled}
-        onChange={setEnabled}
-        className="group relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-gray-200 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 data-[checked]:bg-indigo-600"
+        checked={checked}
+        onChange={onChange}
+        className={`group relative inline-flex gap-4 h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent 
+          ${checked ? "bg-indigo-600" : "bg-gray-200"} transition-colors duration-200 ease-in-out 
+          focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2`}
       >
-        <span className="sr-only">Use setting</span>
-        <span className="pointer-events-none relative inline-block size-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out group-data-[checked]:translate-x-5">
+        <span className="sr-only">Toggle {label}</span>
+        <span
+          className={`pointer-events-none relative inline-block size-5 transform rounded-full bg-white shadow ring-0 
+          transition duration-200 ease-in-out ${checked ? "translate-x-5" : "translate-x-0"}`}
+        >
+          {/* Off Icon */}
           <span
             aria-hidden="true"
-            className="absolute inset-0 flex size-full items-center justify-center transition-opacity duration-200 ease-in group-data-[checked]:opacity-0 group-data-[checked]:duration-100 group-data-[checked]:ease-out"
+            className={`absolute inset-0 flex size-full items-center justify-center transition-opacity duration-200 ease-in 
+            ${checked ? "opacity-0" : "opacity-100"}`}
           >
             <svg
               fill="none"
@@ -33,9 +37,11 @@ const ToggleSwitch = ({ label }) => {
               />
             </svg>
           </span>
+          {/* On Icon */}
           <span
             aria-hidden="true"
-            className="absolute inset-0 flex size-full items-center justify-center opacity-0 transition-opacity duration-100 ease-out group-data-[checked]:opacity-100 group-data-[checked]:duration-200 group-data-[checked]:ease-in"
+            className={`absolute inset-0 flex size-full items-center justify-center transition-opacity duration-200 ease-in 
+            ${checked ? "opacity-100" : "opacity-0"}`}
           >
             <svg
               fill="currentColor"

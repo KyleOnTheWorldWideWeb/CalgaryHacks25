@@ -40,7 +40,7 @@ const MapComponent = () => {
   }, [mapView]); // Re-initialize map if view changes
 
   return (
-    <div style={{ width: "100%", height: "calc(100vh - 10rem)" }}>
+    <div style={{ width: "100%", height: "calc(100vh - 5rem)" }}>
       <div ref={mapContainer} className="absolute inset-0 w-full h-full" />
       {mapRef.current && <MapLayers map={mapRef.current} />}
     </div>

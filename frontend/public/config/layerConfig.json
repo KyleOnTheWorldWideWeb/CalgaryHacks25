@@ -18,7 +18,7 @@
     "name": "Grizzly Bear Range",
     "file": "/data/Grizzly_Bear_Range.geojson",
     "color": "#A52A2A",
-    "visible": true
+    "visible": false
   },
   {
     "id": "swift-fox-layer",
