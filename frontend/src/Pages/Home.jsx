@@ -1,4 +1,3 @@
-import NavBar from "../components/NavBar.jsx";
 import MainContainer from "../components/MainContainer.jsx";
 import React, { useEffect, useState } from "react";
 import "../Styles/root_local.scss";
