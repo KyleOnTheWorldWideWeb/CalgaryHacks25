@@ -1,0 +1,30 @@
+[
+  {
+    "id": "caribou-layer",
+    "name": "Caribou Range",
+    "file": "/data/Caribou_Range.geojson",
+    "color": "#008000",
+    "visible": true
+  },
+  {
+    "id": "burrowing-owl-layer",
+    "name": "Burrowing Owl Range",
+    "file": "/data/Burrowing_Owl_Range.geojson",
+    "color": "#FFD700",
+    "visible": true
+  },
+  {
+    "id": "grizzly-bear-layer",
+    "name": "Grizzly Bear Range",
+    "file": "/data/Grizzly_Bear_Range.geojson",
+    "color": "#A52A2A",
+    "visible": true
+  },
+  {
+    "id": "swift-fox-layer",
+    "name": "Swift Fox Range",
+    "file": "/data/Swift_Fox_Range.geojson",
+    "color": "#FF4500",
+    "visible": true
+  }
+]

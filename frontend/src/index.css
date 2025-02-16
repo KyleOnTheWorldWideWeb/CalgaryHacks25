@@ -1,6 +1,2 @@
 @import "tailwindcss";
 
-
-.my-class{
-  @apply text-3xl font-bold underline p-4 border-2 border-red-600 bg-pink-300 border-dashed
-}

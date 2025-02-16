@@ -1,27 +1,22 @@
-import { useState } from "react";
+import React from "react";
 import "../styles/slider.scss";
+import { useMapContext } from "../context/MapContext"; // Import the context
 
-const DateSlider = ({ startDate, endDate }) => {
-  const start = new Date(startDate).getTime();
-  const end = new Date(endDate).getTime();
-  const [selectedDate, setSelectedDate] = useState(start);
-
-  const handleChange = (event) => {
-    setSelectedDate(parseInt(event.target.value));
-  };
+const DateSlider = () => {
+  const { year, updateYear } = useMapContext(); // Get year & update function
 
   return (
     <div className="date-slider-container">
       <div className="selected-date">
-        Selected Date: {new Date(selectedDate).toLocaleDateString()}
+        Selected Year: {year}
       </div>
       <input
         type="range"
-        min={start}
-        max={end}
-        step={24 * 60 * 60 * 1000} // Step is one day
-        value={selectedDate}
-        onChange={handleChange}
+        min="1950"
+        max="2010"
+        step="1"
+        value={year}
+        onChange={(e) => updateYear(Number(e.target.value))}
         className="date-slider"
       />
     </div>
