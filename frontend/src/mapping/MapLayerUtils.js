@@ -36,6 +36,7 @@ export const addFillLayer = (map, layer, layerVisibility, year = null) => {
     .catch(error => console.error(`Error loading fill layer (${layer.id}):`, error));
 };
 
+
 export const addHeatmapLayer = (map, layer, layerVisibility, year = null) => {
   fetch(layer.file)
     .then(response => {
@@ -84,17 +85,26 @@ export const addHeatmapLayer = (map, layer, layerVisibility, year = null) => {
               maxValue, "red"     // Hottest (red)
             ],
 
-            // Adjust circle radius dynamically based on zoom
+            // Adjust circle radius dynamically based on zoom for better blending
             "circle-radius": [
               "interpolate",
               ["linear"],
               ["zoom"],
-              10, 8,  // Small radius at low zoom
-              15, 13  // Larger radius at higher zoom
+              5, 10,   // Small radius at low zoom
+              10, 25   // Larger radius at higher zoom
             ],
 
-            // Slight opacity for visibility
-            "circle-opacity": layerVisibility[layer.id] ? 0.8 : 0.0,
+            // NEW: Slight blur to make points merge better
+            "circle-blur": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              5, 0.2,  // Low blur at small zoom
+              10, 0.5  // More blur at high zoom for soft blending
+            ],
+
+            // Slight opacity for better blending
+            "circle-opacity": layerVisibility[layer.id] ? 0.7 : 0.0,
           },
         });
       } else {

@@ -16,7 +16,7 @@ export const MapProvider = ({ children }) => {
   const [year, setYear] = useState(startYear);
 
   // State for selected map view
-  const [mapView, setMapView] = useState(MAP_VIEWS.streets); // Default view
+  const [mapView, setMapView] = useState(MAP_VIEWS.outdoors); // Default view
 
   // State for layer visibility
   const [layerVisibility, setLayerVisibility] = useState({});

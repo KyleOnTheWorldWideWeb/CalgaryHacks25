@@ -4,7 +4,7 @@
     "name": "Caribou Range",
     "description": "The Range of the Caribou",
     "file": "/data/polygonStaticData/Caribou_Range.geojson",
-    "color": "#008000",
+    "color": "#4CAF50",
     "visible": true,
     "geometryType": "polygon",
     "dataScope": "Static"
@@ -14,8 +14,8 @@
     "name": "Burrowing Owl Range",
     "description": "The Range of the Burrowing Owl",
     "file": "/data/polygonStaticData/Burrowing_Owl_Range.geojson",
-    "color": "#FFD700",
-    "visible": true,
+    "color": "#E6AC00",
+    "visible": false,
     "geometryType": "polygon",
     "dataScope": "Static"
   },
@@ -24,7 +24,7 @@
     "name": "Grizzly Bear Range",
     "description": "The Range of the Grizzly Bear",
     "file": "/data/polygonStaticData/Grizzly_Bear_Range.geojson",
-    "color": "#A52A2A",
+    "color": "#8B4513",
     "visible": false,
     "geometryType": "polygon",
     "dataScope": "Static"
@@ -34,20 +34,30 @@
     "name": "Swift Fox Range",
     "description": "The Range of the Swift Fox",
     "file": "/data/polygonStaticData/Swift_Fox_Range.geojson",
-    "color": "#FF4500",
+    "color": "#FFA07A",
     "visible": true,
     "category": "Wildlife",
     "geometryType": "polygon",
     "dataScope": "Static"
-
+  },
+  {
+    "id": "mountain-goat-sheep-layer",
+    "name": "Mountain Goat and Sheep Range",
+    "description": "The Range of the Mountain Goat and Sheep",
+    "file": "/data/polygonStaticData/MountainGoatAndSheepAreas.geojson",
+    "color": "#D8BFD8",
+    "visible": true,
+    "category": "Wildlife",
+    "geometryType": "polygon",
+    "dataScope": "Static"
   },
   {
     "id": "avg-temp",
     "name": "Yearly Average Temperature",
     "description": "The average temperature in Alberta from 2003 to 2023",
     "file": "/data/pointTimeSeriesData/Alberta_Small_Avg_Temp.geojson",
-    "color": "#FF4500",
-    "visible": true,
+    "color": ["#1E90FF", "#FF0000"], 
+    "visible": false,
     "category": "Climate",
     "geometryType": "point",
     "dataScope": "Time Series"
