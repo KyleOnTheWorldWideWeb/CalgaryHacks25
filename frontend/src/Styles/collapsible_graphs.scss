@@ -14,22 +14,25 @@
   transition: all 0.3s ease-in-out;
   width: 100%;
 
-  .toggle-btn {
-    width: 100%;
-    padding: 0.75rem;
-    background: #4f378a;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
   .graphs {
     padding: 1rem;
     background: white;
   }
+}
+
+.toggle-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  background-color: #121827;
+  color: white;
+  cursor: pointer;
+}
+
+.symbol {
+    margin-left: 0px;
 }
