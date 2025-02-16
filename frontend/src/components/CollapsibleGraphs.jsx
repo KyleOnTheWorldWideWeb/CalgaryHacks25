@@ -14,7 +14,7 @@ const CollapsibleGraph = ({ title, data, xLabel, yLabel, xKey, yKey }) => {
       <div className="graphs">
         <div className="graph-container">
           <ResponsiveContainer width="100%" height={350}>
-            <LineChart data={data} margin={{ top: 25, right: 25, bottom: 25, left: 25 }}>
+            <LineChart data={data} margin={{ top: 25, right: 25, bottom: 30, left: 25 }}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey={xKey} label={{ value: xLabel, position: "insideBottom", offset: -20 }} />
               <YAxis label={{ value: yLabel, angle: -90, position: "insideLeft", offset: -8, dy: 50 }} />
