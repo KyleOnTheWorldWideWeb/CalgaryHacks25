@@ -8,6 +8,7 @@ import OverlaySelectionContainer from "../components/OverlaySelectionContainer.j
 import BottomRowContainer from "../components/BottomRowContainer.jsx";
 import GraphingContainer from "../components/GraphingContainer.jsx";
 import DateSlider from "../components/DateSlider.jsx";
+import CollapsibleGraph from "../components/CollapsibleGraphs.jsx";
 
 function Root() {
   return (
@@ -20,7 +21,9 @@ function Root() {
         </TopRowContainer>
         <DateSlider startDate="1900-01-01" endDate="2024-02-16" />
         <BottomRowContainer>
-          <GraphingContainer />
+          <CollapsibleGraph title={"Lil wayne"}></CollapsibleGraph>
+          <CollapsibleGraph title={"Is"}></CollapsibleGraph>
+          <CollapsibleGraph title={"Tha Best"}></CollapsibleGraph>
         </BottomRowContainer>
       </MainContainer>
     </div>
