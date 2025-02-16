@@ -8,7 +8,7 @@ const OverlaySelectionContainer = () => {
   const { layerVisibility, toggleLayer } = useMapContext();
 
   return (
-    <div className="overlay-selection-container bg-white p-4 shadow-md rounded-lg">
+    <div className="overlay-selection-container bg-white p-2 shadow-md rounded-lg">
       <h3 className="text-lg font-semibold mb-2">Overlay Selection</h3>
 
       {/* Map View Selection */}
@@ -17,8 +17,8 @@ const OverlaySelectionContainer = () => {
       {/* Layer Toggles */}
       <h4 className="text-md font-semibold mb-2">Toggle Layers</h4>
       <div className="space-y-2">
-        {Object.entries(layerVisibility).map(([key, value]) => (
-          <ToggleSwitch key={key} label={key} checked={value} onChange={() => toggleLayer(key)} />
+        {Object.entries(layerVisibility).map(([key]) => (
+          <ToggleSwitch label={key} />
         ))}
       </div>
     </div>
