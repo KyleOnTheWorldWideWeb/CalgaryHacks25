@@ -45,13 +45,12 @@
     "id": "avg-temp",
     "name": "Yearly Average Temperature",
     "description": "The average temperature in Alberta from 2003 to 2023",
-    "file": "/data/timePointData/Avg_temp.geojson",
+    "file": "/data/pointTimeSeriesData/Avg_temp.geojson",
     "color": "#FF4500",
     "visible": true,
     "category": "Climate",
     "geometryType": "point",
     "dataScope": "Time Series",
-    "heatMapRange": ["blue", "yellow"]
+    "heatMapRange": ["Blue","Yellow"]
   }
-
 ]
