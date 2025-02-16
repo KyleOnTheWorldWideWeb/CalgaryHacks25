@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/slider.scss";
+import "../Styles/slider.scss";
 import { useMapContext } from "../context/MapContext"; // Import the context
 
 const DateSlider = () => {
