@@ -4,9 +4,7 @@ import "../Styles/collapsible_graphs.scss";
 
 const CollapsibleGraph = ({ title, data, xLabel, yLabel, xKey, yKey }) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(title);
-  console.log(data);
-
+  
   return (
     <div className="collapsible-graph">
       <button className="toggle-btn" onClick={() => setIsOpen(!isOpen)}>
