@@ -1,14 +1,14 @@
-import NavBar from "../Componets/NavBar.jsx";
-import MainContainer from "../Componets/MainContainer.jsx";
+import NavBar from "../components/NavBar.jsx";
+import MainContainer from "../components/MainContainer.jsx";
 import React, { useEffect, useState } from "react";
 import "../Styles/root_local.scss";
 import MapComponent from "../mapping/MapComponent.jsx";
-import Header from "../Componets/Header.jsx";
-import TopRowContainer from "../Componets/TopRowContainer.jsx";
-import OverlaySelectionContainer from "../Componets/OverlaySelectionContainer.jsx";
-import BottomRowContainer from "../Componets/BottomRowContainer.jsx";
-import GraphingContainer from "../Componets/GraphingContainer.jsx";
-import DateSlider from "../Componets/DateSlider.jsx";
+import Header from "../components/Header.jsx";
+import TopRowContainer from "../components/TopRowContainer.jsx";
+import OverlaySelectionContainer from "../components/OverlaySelectionContainer.jsx";
+import BottomRowContainer from "../components/BottomRowContainer.jsx";
+import GraphingContainer from "../components/GraphingContainer.jsx";
+import DateSlider from "../components/DateSlider.jsx";
 
 function Root() {
   return (
