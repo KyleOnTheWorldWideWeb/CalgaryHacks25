@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/slider.scss";
 
 const DateSlider = ({ startDate, endDate }) => {
   const start = new Date(startDate).getTime();
@@ -10,8 +11,8 @@ const DateSlider = ({ startDate, endDate }) => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 p-4">
-      <div className="text-lg font-medium">
+    <div className="date-slider-container">
+      <div className="selected-date">
         Selected Date: {new Date(selectedDate).toLocaleDateString()}
       </div>
       <input
@@ -21,7 +22,7 @@ const DateSlider = ({ startDate, endDate }) => {
         step={24 * 60 * 60 * 1000} // Step is one day
         value={selectedDate}
         onChange={handleChange}
-        className="w-full"
+        className="date-slider"
       />
     </div>
   );
