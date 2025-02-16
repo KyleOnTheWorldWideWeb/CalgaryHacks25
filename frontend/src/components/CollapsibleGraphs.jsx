@@ -14,11 +14,11 @@ const CollapsibleGraph = ({ title, data, xLabel, yLabel, xKey, yKey }) => {
       {isOpen && (
         <div className="graphs">
           <div className="graph-container">
-            <ResponsiveContainer width="100%" height={250}>
-              <LineChart data={data}>
+            <ResponsiveContainer width="100%" height={350}>
+              <LineChart data={data} margin={{ top: 25, right: 25, bottom: 25, left: 25 }}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey={xKey} label={{ value: xLabel, position: "insideBottom", offset: -5 }} />
-                <YAxis label={{ value: yLabel, angle: -90, position: "insideLeft" }} />
+                <XAxis dataKey={xKey} label={{ value: xLabel, position: "insideBottom", offset: -20 }} />
+                <YAxis label={{ value: yLabel, angle: -90, position: "insideLeft", offset: -8, dy: 50 }} />
                 <Tooltip />
                 <Line type="monotone" dataKey={yKey} stroke="#8884d8" />
               </LineChart>

@@ -58,7 +58,7 @@ function Root() {
               isVisible && graphData[layerId] ? (
                 <CollapsibleGraph
                   key={layerId}
-                  title={layerId}
+                  title={graphData[layerId].title}
                   data={graphData[layerId].xValues.map((x, index) => ({
                     [graphData[layerId].xKey]: x,
                     [graphData[layerId].yKey]: graphData[layerId].yValues[index],
