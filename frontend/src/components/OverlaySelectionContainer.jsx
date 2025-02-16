@@ -2,7 +2,7 @@ import React from "react";
 import "../Styles/overlay_selection_container.scss";
 import { useMapContext } from "../context/MapContext";
 import ToggleSwitch from "./ToggleSwitch";
-import MapViewControl from "./MapViewControl"; // New Component
+import MapViewControl from "./MapViewControl";
 
 const OverlaySelectionContainer = () => {
   const { layers, layerVisibility, toggleLayer } = useMapContext(); // ✅ Get `layers`
@@ -42,6 +42,7 @@ const OverlaySelectionContainer = () => {
             </div>
           );
         })}
+
       </div>
     </div>
   );

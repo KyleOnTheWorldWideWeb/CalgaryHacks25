@@ -8,27 +8,66 @@ import OverlaySelectionContainer from "../components/OverlaySelectionContainer.j
 import BottomRowContainer from "../components/BottomRowContainer.jsx";
 import DateSlider from "../components/DateSlider.jsx";
 import CollapsibleGraph from "../components/CollapsibleGraphs.jsx";
+import { useMapContext } from "../context/MapContext";
 
 function Root() {
-  const sampleData = [
-    { time: "2020", population: 100 },
-    { time: "2021", population: 120 },
-    { time: "2022", population: 140 },
-    { time: "2023", population: 160 },
-  ];
+  const { layerVisibility } = useMapContext();
+
+  const [graphData, setGraphData] = useState({});
+
+  useEffect(() => {
+    const loadGraphData = async () => {
+      const newGraphData = {};
+      await Promise.all(
+        Object.entries(layerVisibility).map(async ([layerId, isVisible]) => {
+          if (isVisible) {
+            try {
+              const dataModule = await import(`/public/graph_data/${layerId}.js`); // Why import no work
+              if (Array.isArray(dataModule.default) && dataModule.default.length > 0) {
+                newGraphData[layerId] = dataModule.default[0];
+              }
+            } catch (error) {
+              console.error(`Failed to load graph data for ${layerId}:`, error);
+            }
+          }
+        })
+      );
+      setGraphData(newGraphData);
+    };
+
+    loadGraphData();
+  }, [layerVisibility]);
+
   return (
     <div className="bg-gray-900">
       <Header />
       <MainContainer>
         <TopRowContainer>
-          <OverlaySelectionContainer></OverlaySelectionContainer>
+          <OverlaySelectionContainer />
           <MapComponent />
         </TopRowContainer>
         <DateSlider startDate="1900-01-01" endDate="2024-02-16" />
         <BottomRowContainer>
-          <CollapsibleGraph title={"Leel Wayne"} data={sampleData} xLabel={"Time"} yLabel={"Population"} xKey={"time"} yKey={"population"}></CollapsibleGraph>
-          <CollapsibleGraph title={"Is"} data={sampleData} xLabel={"Time"} yLabel={"Population"} xKey={"time"} yKey={"population"}></CollapsibleGraph>
-          <CollapsibleGraph title={"Tha Best"} data={sampleData} xLabel={"Time"} yLabel={"Population"} xKey={"time"} yKey={"population"}></CollapsibleGraph>
+          {Object.values(layerVisibility).some(isVisible => isVisible) ? (
+            Object.entries(layerVisibility).map(([layerId, isVisible]) =>
+              isVisible && graphData[layerId] ? (
+                <CollapsibleGraph
+                  key={layerId}
+                  title={layerId}
+                  data={graphData[layerId].xValues.map((x, index) => ({
+                    [graphData[layerId].xKey]: x,
+                    [graphData[layerId].yKey]: graphData[layerId].yValues[index],
+                  }))}
+                  xLabel={graphData[layerId].xLabel}
+                  yLabel={graphData[layerId].yLabel}
+                  xKey={graphData[layerId].xKey}
+                  yKey={graphData[layerId].yKey}
+                />
+              ) : null
+            )
+          ) : (
+            <p>Switch a toggle to display additional information</p>
+          )}
         </BottomRowContainer>
       </MainContainer>
     </div>
@@ -36,3 +75,4 @@ function Root() {
 }
 
 export default Root;
+
