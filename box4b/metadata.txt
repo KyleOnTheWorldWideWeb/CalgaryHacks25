@@ -1,0 +1,156 @@
+# Global attributes
+# 
+# Conventions:: CF-1.7 CMIP-6.2
+# GCM__experiment:: historical,ssp126
+# GCM__experiment_id:: historical,ssp126
+# GCM__initialization_index:: 1
+# activity_id:: CMIP
+# cat:_data_format_:: zarr
+# cat:activity:: ScenarioMIP
+# cat:bias_adjust_institution:: PCIC
+# cat:bias_adjust_project:: CanDCS-M6
+# cat:domain:: CAN
+# cat:experiment:: ssp126
+# cat:mip_era:: CMIP6
+# cat:name:: tg_mean_ann
+# cat:processing_level:: percentiles
+# cat:type:: simulation
+# cat:variable:: tg_mean
+# cat:version:: v10
+# cat:xrfreq:: YS
+# contact:: Pacific Climate Impacts Consortium
+# domain:: Canada
+# frequency:: day
+# institution:: Pacific Climate Impacts Consortium (PCIC), Victoria, BC, www.pacificclimate.org
+# institution_id:: PCIC
+# method:: Multivariate Bias Correcation N-dimensional PDF transform (MBCn)
+# method_id:: MBCn
+# mip_era:: CMIP6
+# modeling_realm:: atmos
+# package_id:: https://cran.r-project.org/package=MBC
+# product:: downscaled output
+# product_id:: CanDCS-M6
+# product_title:: Canadian Downscaled Climate Scenarios – Multivariate (CMIP6)
+# project_id:: CMIP6
+# references:: Cannon, A.J. Multivariate quantile mapping bias correction: an N-dimensional probability density function transform for climate model simulations of multiple variables. Clim Dyn 50, 31–49 (2018). https://doi.org/10.1007/s00382-017-3580-6
+# table_id:: day
+# target__contact:: Pacific Climate Impacts Consortium
+# target__dataset:: PCIC-Blend daily 300 arc second climate grids
+# target__dataset_id:: PCIC-Blend
+# target__institution:: Pacific Climate Impacts Consortium
+# target__institution_id:: PCIC
+# target__references:: Werner, A.T., Schnorbus, M.A., Shrestha, R.R., Cannon, A.J., Zwiers, F.W., Dayon G., Anslow, F., 2019. A long-term, temporally consistent, gridded daily meteorological dataset for northwestern North America, Scientific Data, 6, 180299 
+#   MacDonald H, McKenney DW, Wang XL, Pedlar J, Papadopol P, Lawrence K, Feng Y, Hutchinson MF (2021) Spatial models of adjusted precipitation for Canada at varying time scales. Journal of Applied Meteorology and Climatology 
+#   McKenney, D.W., Hutchinson, M.F., Papadopol, P., Lawrence, K., Pedlar, J., Campbell, K., Milewska, E., Hopkinson, R., Price, D., and Owen, T., 2011. Customized spatial climate models for North America. Bulletin of the American Meteorological Society, 92(12): 1611-1622. 
+#   Hopkinson, R.F., McKenney, D.W., Milewska, E.J., Hutchinson, M.F., Papadopol, P., Vincent, L.A., 2011. Impact of aligning climatological day on gridding daily maximum-minimum temperature and precipitation over Canada. Journal of Applied Meteorology and Climatology 50: 1654-1665.
+# target__version:: 2.1 (September 2021)
+# intake_esm_vars:: tg_mean
+# cat:id:: CanDCS-M6_CMIP6_ScenarioMIP_ssp126_CAN
+# ensemble_size:: 26
+# cat:one_var:: tg_mean
+#
+# Coordinates
+#   lat
+#     axis:: Y
+#     long_name:: latitude
+#     standard_name:: latitude
+#     units:: degrees_north
+#   lon
+#     axis:: X
+#     long_name:: longitude
+#     standard_name:: longitude
+#     units:: degrees_east
+#   time
+#
+# Data variables
+#   ssp126_tg_mean_p10
+#     cell_methods:: tasmin: time: minimum tasmax: time: maximum time: mean within days time: mean over days
+#     description:: Annual mean of daily mean temperature. 10th percentile of ensemble.
+#     history:: tasmin: 
+#     tasmax: 
+#     [2023-12-22 00:18:13] tg: TG(tasmin=tasmin, tasmax=tasmax) - xclim version: 0.45.0
+#     [2024-02-09 03:42:35] tg_mean: ccdp.TG_MEAN_ANN(tas=tas) with options check_missing=any - xclim version: 0.46.0
+#     long_name:: Mean daily mean temperature
+#     standard_name:: air_temperature
+#     units:: K
+#   ssp126_tg_mean_p50
+#     cell_methods:: tasmin: time: minimum tasmax: time: maximum time: mean within days time: mean over days
+#     description:: Annual mean of daily mean temperature. 50th percentile of ensemble.
+#     history:: tasmin: 
+#     tasmax: 
+#     [2023-12-22 00:18:13] tg: TG(tasmin=tasmin, tasmax=tasmax) - xclim version: 0.45.0
+#     [2024-02-09 03:42:35] tg_mean: ccdp.TG_MEAN_ANN(tas=tas) with options check_missing=any - xclim version: 0.46.0
+#     long_name:: Mean daily mean temperature
+#     standard_name:: air_temperature
+#     units:: K
+#   ssp126_tg_mean_p90
+#     cell_methods:: tasmin: time: minimum tasmax: time: maximum time: mean within days time: mean over days
+#     description:: Annual mean of daily mean temperature. 90th percentile of ensemble.
+#     history:: tasmin: 
+#     tasmax: 
+#     [2023-12-22 00:18:13] tg: TG(tasmin=tasmin, tasmax=tasmax) - xclim version: 0.45.0
+#     [2024-02-09 03:42:35] tg_mean: ccdp.TG_MEAN_ANN(tas=tas) with options check_missing=any - xclim version: 0.46.0
+#     long_name:: Mean daily mean temperature
+#     standard_name:: air_temperature
+#     units:: K
+#   ssp245_tg_mean_p10
+#     cell_methods:: tasmin: time: minimum tasmax: time: maximum time: mean within days time: mean over days
+#     description:: Annual mean of daily mean temperature. 10th percentile of ensemble.
+#     history:: tasmin: 
+#     tasmax: 
+#     [2023-12-21 19:47:19] tg: TG(tasmin=tasmin, tasmax=tasmax) - xclim version: 0.45.0
+#     [2024-02-12 03:04:30] tg_mean: ccdp.TG_MEAN_ANN(tas=tas) with options check_missing=any - xclim version: 0.46.0
+#     long_name:: Mean daily mean temperature
+#     standard_name:: air_temperature
+#     units:: K
+#   ssp245_tg_mean_p50
+#     cell_methods:: tasmin: time: minimum tasmax: time: maximum time: mean within days time: mean over days
+#     description:: Annual mean of daily mean temperature. 50th percentile of ensemble.
+#     history:: tasmin: 
+#     tasmax: 
+#     [2023-12-21 19:47:19] tg: TG(tasmin=tasmin, tasmax=tasmax) - xclim version: 0.45.0
+#     [2024-02-12 03:04:30] tg_mean: ccdp.TG_MEAN_ANN(tas=tas) with options check_missing=any - xclim version: 0.46.0
+#     long_name:: Mean daily mean temperature
+#     standard_name:: air_temperature
+#     units:: K
+#   ssp245_tg_mean_p90
+#     cell_methods:: tasmin: time: minimum tasmax: time: maximum time: mean within days time: mean over days
+#     description:: Annual mean of daily mean temperature. 90th percentile of ensemble.
+#     history:: tasmin: 
+#     tasmax: 
+#     [2023-12-21 19:47:19] tg: TG(tasmin=tasmin, tasmax=tasmax) - xclim version: 0.45.0
+#     [2024-02-12 03:04:30] tg_mean: ccdp.TG_MEAN_ANN(tas=tas) with options check_missing=any - xclim version: 0.46.0
+#     long_name:: Mean daily mean temperature
+#     standard_name:: air_temperature
+#     units:: K
+#   ssp585_tg_mean_p10
+#     cell_methods:: tasmin: time: minimum tasmax: time: maximum time: mean within days time: mean over days
+#     description:: Annual mean of daily mean temperature. 10th percentile of ensemble.
+#     history:: tasmin: 
+#     tasmax: 
+#     [2023-12-21 18:24:06] tg: TG(tasmin=tasmin, tasmax=tasmax) - xclim version: 0.45.0
+#     [2024-02-15 17:11:29] tg_mean: ccdp.TG_MEAN_ANN(tas=tas) with options check_missing=any - xclim version: 0.46.0
+#     long_name:: Mean daily mean temperature
+#     standard_name:: air_temperature
+#     units:: K
+#   ssp585_tg_mean_p50
+#     cell_methods:: tasmin: time: minimum tasmax: time: maximum time: mean within days time: mean over days
+#     description:: Annual mean of daily mean temperature. 50th percentile of ensemble.
+#     history:: tasmin: 
+#     tasmax: 
+#     [2023-12-21 18:24:06] tg: TG(tasmin=tasmin, tasmax=tasmax) - xclim version: 0.45.0
+#     [2024-02-15 17:11:29] tg_mean: ccdp.TG_MEAN_ANN(tas=tas) with options check_missing=any - xclim version: 0.46.0
+#     long_name:: Mean daily mean temperature
+#     standard_name:: air_temperature
+#     units:: K
+#   ssp585_tg_mean_p90
+#     cell_methods:: tasmin: time: minimum tasmax: time: maximum time: mean within days time: mean over days
+#     description:: Annual mean of daily mean temperature. 90th percentile of ensemble.
+#     history:: tasmin: 
+#     tasmax: 
+#     [2023-12-21 18:24:06] tg: TG(tasmin=tasmin, tasmax=tasmax) - xclim version: 0.45.0
+#     [2024-02-15 17:11:29] tg_mean: ccdp.TG_MEAN_ANN(tas=tas) with options check_missing=any - xclim version: 0.46.0
+#     long_name:: Mean daily mean temperature
+#     standard_name:: air_temperature
+#     units:: K
+#
