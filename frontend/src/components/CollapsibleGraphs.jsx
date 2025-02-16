@@ -10,7 +10,7 @@ const sampleData = [
 ];
 
 const CollapsibleGraph = ({ title }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="collapsible-graph">
