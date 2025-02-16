@@ -12,6 +12,7 @@ $bottom-row-container-width: 100%;
   box-sizing: border-box;
   background-color: #72a1ffc8;
   overflow: hidden;
+  border-radius: 10px;
 
   @media (max-width: 768px) {
     padding: 1rem; // Adjust padding for smaller screens
