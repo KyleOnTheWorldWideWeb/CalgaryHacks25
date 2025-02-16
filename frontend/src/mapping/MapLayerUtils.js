@@ -64,13 +64,10 @@ export const addHeatmapLayer = (map, layer, layerVisibility, year = null) => {
       const maxValue = Math.max(...values);
       console.log(`Data Range: Min ${minValue}, Max ${maxValue}`);
 
-      // Define a threshold beyond which no color interpolation happens
-      const heatmapThreshold = 0.1; // Adjust this to limit spread
-
       // Use default color range or fallback
-      const heatMapGradient = Array.isArray(layer.heatMapRange) && layer.heatMapRange.length >= 2 
+      const heatMapGradient = Array.isArray(layer.heatMapRange) && layer.heatMapRange.length >= 3
         ? layer.heatMapRange 
-        : ["blue", "yellow", "red"]; // Default: blue (cold) → yellow → red (hot)
+        : ["rgba(0,0,0,0)", "yellow", "red"]; // ❗ FIXED: Set transparent background instead of blue
 
       if (!map.getSource(layer.id)) {
         map.addSource(layer.id, {
@@ -83,24 +80,34 @@ export const addHeatmapLayer = (map, layer, layerVisibility, year = null) => {
           type: "heatmap",
           source: layer.id,
           paint: {
-            // **Use `step` to create color bands**
+            // ❗ FIXED: Stops affecting the entire map
             "heatmap-color": [
               "step",
-              ["heatmap-density"], // Stops full interpolation across the map
-              heatMapGradient[0], heatmapThreshold, // Coldest (low density)
-              heatMapGradient[1], 0.3,  // Mid temperature
-              heatMapGradient[2], 0.6   // Hottest (red)
+              ["heatmap-density"],
+              heatMapGradient[0], // Transparent background
+              0.2, heatMapGradient[1], // Yellow (medium density)
+              0.5, heatMapGradient[2]  // Red (high density)
             ],
 
-            "heatmap-weight": [
+            // ❗ FIXED: Reduce the spread of the heatmap
+            "heatmap-radius": [
               "interpolate",
               ["linear"],
-              ["to-number", ["get", "data"]],
-              minValue, 0,
-              maxValue, 1
+              ["zoom"],
+              5, 15, // Lower zoom → Smaller spread
+              10, 25 // Higher zoom → Larger spread
             ],
 
-            "heatmap-opacity": layerVisibility[layer.id] ? 0.8 : 0.0,
+            // ❗ FIXED: Ensure only real data points get colored
+            "heatmap-intensity": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              5, 0.8,
+              10, 1.5
+            ],
+
+            "heatmap-opacity": layerVisibility[layer.id] ? 0.7 : 0,
           },
         });
       } else {
