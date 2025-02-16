@@ -54,6 +54,7 @@ export const MapProvider = ({ children }) => {
   const updateYear = (newYear) => {
     if (newYear >= startYear && newYear <= endYear) {
       setYear(newYear);
+      setLayerRefresh((prev) => !prev); // 🔥 Forces layer refresh when time changes
     }
   };
 

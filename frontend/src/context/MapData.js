@@ -7,12 +7,11 @@ export const MAP_VIEWS = {
 };
 
 export const MAP_DATES = {
-  "Start": 1950,
-  "End": 2010
+  "Start": 2003,
+  "End": 2023
 }
 
 export const MapInitializers = {
-
   "StartLocation": [-114.0719, 54.0447],
   "StartZoom": 5
 }

@@ -3,33 +3,55 @@
     "id": "caribou-layer",
     "name": "Caribou Range",
     "description": "The Range of the Caribou",
-    "file": "/data/Caribou_Range.geojson",
+    "file": "/data/polygonStaticData/Caribou_Range.geojson",
     "color": "#008000",
-    "visible": true
+    "visible": true,
+    "geometryType": "polygon",
+    "dataScope": "Static"
   },
   {
     "id": "burrowing-owl-layer",
     "name": "Burrowing Owl Range",
-    "description":"The Range of the Burrowing Owl",
-    "file": "/data/Burrowing_Owl_Range.geojson",
+    "description": "The Range of the Burrowing Owl",
+    "file": "/data/polygonStaticData/Burrowing_Owl_Range.geojson",
     "color": "#FFD700",
-    "visible": true
+    "visible": true,
+    "geometryType": "polygon",
+    "dataScope": "Static"
   },
   {
     "id": "grizzly-bear-layer",
     "name": "Grizzly Bear Range",
-    "description":"The Range of the Grizzly Bear",
-    "file": "/data/Grizzly_Bear_Range.geojson",
+    "description": "The Range of the Grizzly Bear",
+    "file": "/data/polygonStaticData/Grizzly_Bear_Range.geojson",
     "color": "#A52A2A",
-    "visible": false
+    "visible": false,
+    "geometryType": "polygon",
+    "dataScope": "Static"
   },
   {
     "id": "swift-fox-layer",
     "name": "Swift Fox Range",
-    "description":"The Range of the Swift Fox",
-    "file": "/data/Swift_Fox_Range.geojson",
+    "description": "The Range of the Swift Fox",
+    "file": "/data/polygonStaticData/Swift_Fox_Range.geojson",
     "color": "#FF4500",
-    "visible": true
+    "visible": true,
+    "category": "Wildlife",
+    "geometryType": "polygon",
+    "dataScope": "Static"
+
+  },
+  {
+    "id": "avg-temp",
+    "name": "Yearly Average Temperature",
+    "description": "The average temperature in Alberta from 2003 to 2023",
+    "file": "/data/timePointData/Avg_temp.geojson",
+    "color": "#FF4500",
+    "visible": true,
+    "category": "Climate",
+    "geometryType": "point",
+    "dataScope": "Time Series",
+    "heatMapRange": ["blue", "yellow"]
   }
 
 ]

@@ -3,7 +3,7 @@ import { useMapContext } from "../context/MapContext";
 import { addFillLayer, addHeatmapLayer } from "./MapLayerUtils";
 
 const MapLayers = ({ map }) => {
-  const { layerVisibility, layerRefresh } = useMapContext(); // **Watch for refresh state**
+  const { layerVisibility, layerRefresh, year } = useMapContext(); // **Watch for refresh state**
 
   useEffect(() => {
     if (!map) return;
@@ -14,12 +14,17 @@ const MapLayers = ({ map }) => {
       .then((layers) => {
         layers.forEach((layer) => {
           if (layerVisibility[layer.id]) {
-            if (layer.type === "heatmap") {
-              addHeatmapLayer(map, layer, layerVisibility);
-            } else {
-              addFillLayer(map, layer, layerVisibility);
+             // Handle Static & Time-Series Polygons
+             if (layer.geometryType === "polygon") {
+              addFillLayer(map, layer, layerVisibility, layer.dataScope === "Time Series" ? year : null);
             }
+            // Handle Static & Time-Series Points with Heatmap
+            else if (layer.geometryType === "point") {
+              addHeatmapLayer(map, layer, layerVisibility, layer.dataScope === "Time Series" ? year : null);
+            }
+        
           } else {
+            // Remove layers when toggled off
             if (map.getLayer(layer.id)) {
               map.removeLayer(layer.id);
               map.removeSource(layer.id);
@@ -28,7 +33,7 @@ const MapLayers = ({ map }) => {
         });
       })
       .catch((error) => console.error("Error loading layers:", error));
-    }, [layerVisibility, map, layerRefresh]); // **Re-run when refresh state changes**
+  }, [layerVisibility, map, layerRefresh]); // **Re-run when refresh state changes**
 
   return null;
 };
