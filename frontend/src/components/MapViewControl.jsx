@@ -1,9 +1,9 @@
 import React from "react";
 import { useMapContext } from "../context/MapContext";
-import { MAP_VIEWS, } from "../context/MapData";
+import { MAP_VIEWS } from "../context/MapData";
 
 const MapViewControl = () => {
-  const { mapView, updateMapView,  } = useMapContext();
+  const { mapView, updateMapView } = useMapContext();
 
 
   return (
