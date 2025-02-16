@@ -7,7 +7,7 @@ const items = [
 export default function Example() {
   return (
     <div className="overflow-hidden bg-white shadow sm:rounded-md w-full">
-      <ul role="list" className=" divide-gray-900">
+      <ul role="list" className="divide-y divide-gray-900">
         {items.map((item) => (
           <li key={item.id} className="px-4 py-4 sm:px-6">
             {item.content}
