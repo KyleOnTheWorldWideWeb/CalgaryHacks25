@@ -1,68 +1,50 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { useMapContext } from "../context/MapContext";
+import MapLayers from "./MapLayers";
+import { MapInitializers } from "../context/MapData";
 
 const MapComponent = () => {
-  const mapContainer = useRef(null); // Reference to map container
+  const { mapView } = useMapContext();
+  const mapContainer = useRef(null);
+  const mapRef = useRef(null);
+
+  // Store map position (center & zoom)
+  const [mapState, setMapState] = useState({
+    center: MapInitializers.StartLocation,
+    zoom: MapInitializers.StartZoom,
+  });
 
   useEffect(() => {
     mapboxgl.accessToken = import.meta.env.VITE_MAP_BOX_TOKEN;
-    console.log("API Key:", mapboxgl.accessToken);
 
     const map = new mapboxgl.Map({
-      container: mapContainer.current, // Map container reference
-      style: "mapbox://styles/mapbox/streets-v12", // Map style
-      center: [-114.0719, 51.0447], // [Longitude, Latitude] pointing at Calgary
-      zoom: 9, // Initial zoom level
+      container: mapContainer.current,
+      style: mapView, // Controlled by context
+      center: mapState.center, // Preserve last known center
+      zoom: mapState.zoom, // Preserve last known zoom
     });
 
-    // Add a marker
-    new mapboxgl.Marker()
-      .setLngLat([-114.0719, 51.0447])
-      .setPopup(new mapboxgl.Popup().setHTML("<b>Hello, Mapbox!</b>")) // Popup on click
-      .addTo(map);
+    mapRef.current = map;
 
-    // Load GeoJSON layers
-    map.on("load", () => {
-      // Add Caribou Range Layer
-      map.addSource("caribou-range", {
-        type: "geojson",
-        data: "/data/Caribou_Range.geojson",
-      });
-
-      map.addLayer({
-        id: "caribou-layer",
-        type: "fill",
-        source: "caribou-range",
-        paint: {
-          "fill-color": "#008000", // Green for forest/nature
-          "fill-opacity": 0.5,
-          "fill-outline-color": "#004d00",
-        },
-      });
-
-      // Add Grizzly Bear Habitat Layer
-      map.addSource("grizzly-habitat", {
-        type: "geojson",
-        data: "/data/Grizzly_Bear_Range.geojson",
-      });
-
-      map.addLayer({
-        id: "grizzly-layer",
-        type: "fill",
-        source: "grizzly-habitat",
-        paint: {
-          "fill-color": "#8B4513", // Brown for bear habitat
-          "fill-opacity": 0.6,
-          "fill-outline-color": "#5C3317",
-        },
+    // Store map position when user moves it
+    map.on("moveend", () => {
+      setMapState({
+        center: map.getCenter().toArray(),
+        zoom: map.getZoom(),
       });
     });
 
-    return () => map.remove(); // Cleanup when component unmounts
-  }, []);
+    return () => map.remove();
+  }, [mapView]); // Re-initialize map if view changes
 
-  return <div ref={mapContainer} style={{ width: "100%", height: "calc(100vh - 10rem)" }} />;
+  return (
+    <div style={{ width: "100%", height: "calc(100vh - 10rem)" }}>
+      <div ref={mapContainer} className="absolute inset-0 w-full h-full" />
+      {mapRef.current && <MapLayers map={mapRef.current} />}
+    </div>
+  );
 };
 
 export default MapComponent;

@@ -3,7 +3,7 @@ import { useMapContext } from "../context/MapContext";
 import { addFillLayer, addHeatmapLayer } from "./MapLayerUtils";
 
 const MapLayers = ({ map }) => {
-  const { layerVisibility } = useMapContext();
+  const { layerVisibility, layerRefresh } = useMapContext(); // **Watch for refresh state**
 
   useEffect(() => {
     if (!map) return;
@@ -28,7 +28,7 @@ const MapLayers = ({ map }) => {
         });
       })
       .catch((error) => console.error("Error loading layers:", error));
-  }, [layerVisibility, map]);
+    }, [layerVisibility, map, layerRefresh]); // **Re-run when refresh state changes**
 
   return null;
 };

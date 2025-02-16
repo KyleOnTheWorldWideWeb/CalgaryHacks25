@@ -21,6 +21,10 @@ export const MapProvider = ({ children }) => {
   // State for layer visibility (dynamically set from JSON)
   const [layerVisibility, setLayerVisibility] = useState({});
 
+  // state for layer refresh
+  const [layerRefresh, setLayerRefresh] = useState(false);
+
+
   // Load layer data from layerConfig.json on mount
   useEffect(() => {
     fetch("/config/layerConfig.json") // Ensure correct path
@@ -36,14 +40,16 @@ export const MapProvider = ({ children }) => {
       .catch((error) => console.error("Error loading layer config:", error));
   }, []);
 
-  // Function to toggle layer visibility
+  // Toggle Layer Visibility
   const toggleLayer = (layerId) => {
     setLayerVisibility((prev) => ({
       ...prev,
       [layerId]: !prev[layerId],
     }));
-  };
 
+    // **Trigger refresh when toggling a layer**
+    setLayerRefresh((prev) => !prev);
+  };
   // Function to update the year (with min/max limits)
   const updateYear = (newYear) => {
     if (newYear >= startYear && newYear <= endYear) {
@@ -51,10 +57,13 @@ export const MapProvider = ({ children }) => {
     }
   };
 
-  // Function to change the Mapbox view
+  // Update Mapbox view dynamically
   const updateMapView = (newView) => {
     if (MAP_VIEWS[newView]) {
       setMapView(MAP_VIEWS[newView]);
+
+      // **Trigger refresh when changing views**
+      setLayerRefresh((prev) => !prev);
     }
   };
 
@@ -68,7 +77,8 @@ export const MapProvider = ({ children }) => {
         updateMapView, 
         MAP_VIEWS,
         startYear,
-        endYear
+        endYear,
+        layerRefresh,
     }}>
       {children}
     </MapContext.Provider>
