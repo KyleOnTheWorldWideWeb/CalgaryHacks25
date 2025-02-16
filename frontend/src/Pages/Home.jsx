@@ -2,7 +2,7 @@ import NavBar from "../Componets/NavBar.jsx";
 import MainContainer from "../Componets/MainContainer.jsx";
 import React, { useEffect, useState } from "react";
 import "../Styles/root_local.scss";
-import MapComponent from "../Componets/MapComponent.jsx";
+import MapComponent from "../mapping/MapComponent.jsx";
 import Header from "../Componets/Header.jsx";
 import TopRowContainer from "../Componets/TopRowContainer.jsx";
 import OverlaySelectionContainer from "../Componets/OverlaySelectionContainer.jsx";
