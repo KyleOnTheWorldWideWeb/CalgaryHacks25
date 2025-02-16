@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/overlay_selection_container.scss";
+import "../Styles/overlay_selection_container.scss";
 import { useMapContext } from "../context/MapContext";
 import ToggleSwitch from "./ToggleSwitch";
 
