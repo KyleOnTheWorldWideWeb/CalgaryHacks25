@@ -8,6 +8,7 @@ import TopRowContainer from "../Componets/TopRowContainer.jsx";
 import OverlaySelectionContainer from "../Componets/OverlaySelectionContainer.jsx";
 import BottomRowContainer from "../Componets/BottomRowContainer.jsx";
 import GraphingContainer from "../Componets/GraphingContainer.jsx";
+import DateSlider from "../Componets/DateSlider.jsx";
 
 function Root() {
   return (
@@ -18,6 +19,7 @@ function Root() {
           <OverlaySelectionContainer></OverlaySelectionContainer>
           <MapComponent />
         </TopRowContainer>
+        <DateSlider startDate="1900-01-01" endDate="2024-02-16" />
         <BottomRowContainer>
           <GraphingContainer />
         </BottomRowContainer>
