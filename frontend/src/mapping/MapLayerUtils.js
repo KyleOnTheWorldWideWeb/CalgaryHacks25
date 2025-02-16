@@ -36,7 +36,6 @@ export const addFillLayer = (map, layer, layerVisibility, year = null) => {
     .catch(error => console.error(`Error loading fill layer (${layer.id}):`, error));
 };
 
-
 export const addHeatmapLayer = (map, layer, layerVisibility, year = null) => {
   fetch(layer.file)
     .then(response => {
@@ -48,7 +47,7 @@ export const addHeatmapLayer = (map, layer, layerVisibility, year = null) => {
 
       let filteredData = data;
 
-      // Filter features to selected year
+      // Filter by selected year
       if (layer.dataScope === "Time Series" && year !== null) {
         filteredData = {
           type: "FeatureCollection",
@@ -58,16 +57,11 @@ export const addHeatmapLayer = (map, layer, layerVisibility, year = null) => {
 
       console.log(`Filtered Data for Year ${year}:`, filteredData);
 
-      // **Find Min and Max Temperature in Data for Scaling**
+      // Find min and max temperature
       const values = filteredData.features.map(f => f.properties.data);
       const minValue = Math.min(...values);
       const maxValue = Math.max(...values);
-      console.log(`Data Range: Min ${minValue}, Max ${maxValue}`);
-
-      // Use default color range or fallback
-      const heatMapGradient = Array.isArray(layer.heatMapRange) && layer.heatMapRange.length >= 3
-        ? layer.heatMapRange 
-        : ["rgba(0,0,0,0)", "yellow", "red"]; // ❗ FIXED: Set transparent background instead of blue
+      console.log(`Temperature Range: Min ${minValue}, Max ${maxValue}`);
 
       if (!map.getSource(layer.id)) {
         map.addSource(layer.id, {
@@ -77,43 +71,36 @@ export const addHeatmapLayer = (map, layer, layerVisibility, year = null) => {
 
         map.addLayer({
           id: layer.id,
-          type: "heatmap",
+          type: "circle",
           source: layer.id,
           paint: {
-            // ❗ FIXED: Stops affecting the entire map
-            "heatmap-color": [
-              "step",
-              ["heatmap-density"],
-              heatMapGradient[0], // Transparent background
-              0.2, heatMapGradient[1], // Yellow (medium density)
-              0.5, heatMapGradient[2]  // Red (high density)
+            // Color scale for temperature (-32.26°C to 37.08°C)
+            "circle-color": [
+              "interpolate",
+              ["linear"],
+              ["get", "data"], // Temperature property
+              minValue, "blue",   // Coldest (blue)
+              0, "yellow",        // Midpoint (yellow)
+              maxValue, "red"     // Hottest (red)
             ],
 
-            // ❗ FIXED: Reduce the spread of the heatmap
-            "heatmap-radius": [
+            // Adjust circle radius dynamically based on zoom
+            "circle-radius": [
               "interpolate",
               ["linear"],
               ["zoom"],
-              5, 15, // Lower zoom → Smaller spread
-              10, 25 // Higher zoom → Larger spread
+              10, 8,  // Small radius at low zoom
+              15, 13  // Larger radius at higher zoom
             ],
 
-            // ❗ FIXED: Ensure only real data points get colored
-            "heatmap-intensity": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              5, 0.8,
-              10, 1.5
-            ],
-
-            "heatmap-opacity": layerVisibility[layer.id] ? 0.7 : 0,
+            // Slight opacity for visibility
+            "circle-opacity": layerVisibility[layer.id] ? 0.8 : 0.0,
           },
         });
       } else {
-        // Update source when year changes
+        // Update data if year changes
         map.getSource(layer.id).setData(filteredData);
       }
     })
-    .catch(error => console.error(`Error loading heatmap layer (${layer.id}):`, error));
+    .catch(error => console.error(`Error loading temperature layer (${layer.id}):`, error));
 };
