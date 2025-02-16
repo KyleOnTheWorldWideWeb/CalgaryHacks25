@@ -22,12 +22,17 @@ function Root() {
         Object.entries(layerVisibility).map(async ([layerId, isVisible]) => {
           if (isVisible) {
             try {
-              const dataModule = await import(`/public/graph_data/${layerId}.js`); // Why import no work
-              if (Array.isArray(dataModule.default) && dataModule.default.length > 0) {
-                newGraphData[layerId] = dataModule.default[0];
+              const response = await fetch(`/graph_data/${layerId}.js`);
+              if (response.ok) {
+                const dataModule = await response.json();
+                if (Array.isArray(dataModule) && dataModule.length > 0) {
+                  newGraphData[layerId] = dataModule[0];
+                }
+              } else {
+                console.error(`Failed to load graph data for ${layerId}:`, response.statusText);
               }
             } catch (error) {
-              console.error(`Failed to load graph data for ${layerId}:`, error);
+              console.error(`Error fetching graph data for ${layerId}:`, error);
             }
           }
         })
