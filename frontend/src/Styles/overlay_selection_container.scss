@@ -1,7 +1,6 @@
 $overlay-selection-container-width: 100%;
 
 .overlay-selection-container {
-  border: solid rgb(237, 0, 0);
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -12,7 +11,7 @@ $overlay-selection-container-width: 100%;
   padding: 0.5rem;
   // margin: 0 auto; // Center the container
   box-sizing: border-box;
-  background-color: #80808067;
+  background-color: #72a1ff90;
   overflow: hidden;
 
   @media (max-width: 768px) {

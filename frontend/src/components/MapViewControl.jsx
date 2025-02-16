@@ -5,10 +5,8 @@ import { MAP_VIEWS } from "../context/MapData";
 const MapViewControl = () => {
   const { mapView, updateMapView } = useMapContext();
 
-
   return (
     <div className="mb-4">
-      <label className="block text-sm font-medium">Map View</label>
       <select
         value={Object.keys(MAP_VIEWS).find((key) => MAP_VIEWS[key] === mapView)}
         onChange={(e) => updateMapView(e.target.value)}
