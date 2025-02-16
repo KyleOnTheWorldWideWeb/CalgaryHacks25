@@ -10,6 +10,14 @@
 
 $background-directory: '/images/backgrounds/default';
 
+.summaries-title {
+  color: white;
+  font-size: xx-large;
+  margin-left: 0;
+  align-self: flex-start;
+  font-weight: 600;
+}
+
 body {
   background-image: url($background-directory + '/large.jpg');
   background-size: cover;

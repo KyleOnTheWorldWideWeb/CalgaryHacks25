@@ -53,6 +53,7 @@ function Root() {
         </TopRowContainer>
         <DateSlider startDate="1900-01-01" endDate="2024-02-16" />
         <BottomRowContainer>
+          <h3 className="summaries-title">Summaries</h3>
           {Object.values(layerVisibility).some(isVisible => isVisible) ? (
             Object.entries(layerVisibility).map(([layerId, isVisible]) =>
               isVisible && graphData[layerId] ? (
